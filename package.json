@@ -1,0 +1,48 @@
+{
+  "name": "native-websocket-vue3",
+  "version": "3.0.15",
+  "description": "native websocket implementation for vuejs3, vuex and pinia",
+  "main": "dist/build.js",
+  "scripts": {
+    "build": "eslint --ext .js src && webpack --progress",
+    "lint": "eslint --ext .js src"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/uwejan/native-websocket-vue3.git"
+  },
+  "keywords": [
+    "vuejs3",
+    "socket",
+    "vue3",
+    "websocket",
+    "realtime",
+    "flux",
+    "vuex",
+    "pinia",
+    "redux"
+  ],
+  "author": "SADDAM UWEJAN",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/uwejan/native-websocket-vue3/issues"
+  },
+  "homepage": "https://github.com/uwejan/native-websocket-vue3#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.20.7",
+    "@babel/core": "^7.20.12",
+    "@babel/eslint-parser": "^7.19.1",
+    "@babel/plugin-transform-runtime": "^7.19.6",
+    "@babel/preset-env": "^7.20.2",
+    "babel-loader": "^9.1.2",
+    "eslint": "^8.34.0",
+    "eslint-config-standard": "^17.0.0",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-n": "^15.6.1",
+    "eslint-plugin-promise": "^6.1.1",
+    "terser-webpack-plugin": "^5.3.6",
+    "vue": "^3.2.47",
+    "webpack": "^5.75.0",
+    "webpack-cli": "^5.0.1"
+  }
+}
