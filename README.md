@@ -1,4 +1,4 @@
-# vue3-native-websocket &middot; [![npm version](https://img.shields.io/npm/v/native-websocket-vue3.svg?style=flat)](https://www.npmjs.com/package/native-websocket-vue3)
+# native-websocket-vue3 &middot; [![npm version](https://img.shields.io/npm/v/native-websocket-vue3.svg?style=flat)](https://www.npmjs.com/package/native-websocket-vue3)
 
 native websocket implementation for Vuejs3 Vuex, and Pinia.
 
