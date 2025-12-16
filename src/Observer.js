@@ -97,12 +97,20 @@ export default class {
     if (this.mutations) {
       target = this.mutations[target] || target
     }
-    if (this.store._p) {
-      // pinia
+
+    // Detect store type: Pinia uses $patch, Vuex uses commit/dispatch
+    const isPinia = typeof this.store.$patch === 'function'
+
+    if (isPinia) {
+      // Pinia: call action directly if it exists
       target = eventName.toUpperCase()
-      this.store[target](msg)
+      if (typeof this.store[target] === 'function') {
+        this.store[target](msg)
+      } else {
+        console.warn(`[vue-native-socket] Pinia action "${target}" not found in store`)
+      }
     } else {
-      // vuex
+      // Vuex: use commit/dispatch
       this.store[method](target, msg)
     }
   }

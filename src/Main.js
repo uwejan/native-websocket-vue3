@@ -1,5 +1,6 @@
 import Observer from './Observer'
 import Emitter from './Emitter'
+import { useWebSocket } from './useWebSocket'
 
 export default {
 
@@ -83,7 +84,7 @@ export default {
           }
         })
       },
-      beforeDestroy () {
+      beforeUnmount () {
         if (hasProxy) {
           const sockets = this.$options.sockets
 
@@ -97,3 +98,6 @@ export default {
     })
   }
 }
+
+// Named exports for tree-shaking
+export { useWebSocket, Observer, Emitter }

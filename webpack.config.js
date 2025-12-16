@@ -1,27 +1,32 @@
-var path = require('path')
-const TerserPlugin = require('terser-webpack-plugin')
+import path from 'path'
+import { fileURLToPath } from 'url'
+import TerserPlugin from 'terser-webpack-plugin'
 
-module.exports = {
-  entry: ['./src/Main.js'],
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
+
+const baseConfig = {
   mode: 'production',
-  output: {
-    path: path.resolve(__dirname, './dist'),
-    filename: 'build.js',
-    library: ['VueNativeSock'],
-    libraryTarget: 'umd'
-  },
   devtool: 'source-map',
   optimization: {
     minimize: true,
-    minimizer: [new TerserPlugin()]
+    minimizer: [new TerserPlugin()],
+    concatenateModules: true
   },
   resolve: {
     alias: {
-      '@': path.resolve(__dirname, './src'),
-    }
+      '@': path.resolve(__dirname, './src')
+    },
+    extensions: ['.js', '.json']
   },
   module: {
     rules: [
+      {
+        test: /\.js$/,
+        resolve: {
+          fullySpecified: false
+        }
+      },
       {
         test: /\.js$/,
         exclude: /node_modules/,
@@ -36,3 +41,50 @@ module.exports = {
     ]
   }
 }
+
+export default [
+  // CommonJS/UMD build
+  {
+    ...baseConfig,
+    entry: './src/Main.js',
+    externals: {
+      vue: {
+        commonjs: 'vue',
+        commonjs2: 'vue',
+        amd: 'vue',
+        root: 'Vue'
+      }
+    },
+    output: {
+      path: path.resolve(__dirname, './dist'),
+      filename: 'build.js',
+      library: {
+        name: 'VueNativeSock',
+        type: 'umd',
+        export: 'default'
+      },
+      globalObject: 'this'
+    }
+  },
+  // ESM build
+  {
+    ...baseConfig,
+    entry: './src/Main.js',
+    experiments: {
+      outputModule: true
+    },
+    externals: {
+      vue: 'vue'
+    },
+    externalsType: 'module',
+    output: {
+      path: path.resolve(__dirname, './dist'),
+      filename: 'build.esm.js',
+      library: {
+        type: 'module'
+      },
+      module: true,
+      chunkFormat: 'module'
+    }
+  }
+]

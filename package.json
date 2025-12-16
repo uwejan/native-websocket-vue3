@@ -1,48 +1,86 @@
 {
   "name": "native-websocket-vue3",
-  "version": "3.0.15",
-  "description": "native websocket implementation for vuejs3, vuex and pinia",
+  "version": "4.0.0",
+  "type": "module",
+  "description": "Native WebSocket implementation for Vue 3 with Composition API, Vuex, and Pinia support. Features auto-reconnect, TypeScript definitions, and useWebSocket composable.",
   "main": "dist/build.js",
+  "module": "dist/build.esm.js",
+  "types": "types/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./types/index.d.ts",
+      "import": "./dist/build.esm.js",
+      "require": "./dist/build.js"
+    }
+  },
+  "files": [
+    "dist",
+    "types",
+    "src"
+  ],
   "scripts": {
-    "build": "eslint --ext .js src && webpack --progress",
-    "lint": "eslint --ext .js src"
+    "build": "npm run lint && webpack --progress",
+    "lint": "eslint src",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/uwejan/native-websocket-vue3.git"
   },
   "keywords": [
-    "vuejs3",
-    "socket",
     "vue3",
+    "vue",
     "websocket",
+    "socket",
     "realtime",
-    "flux",
     "vuex",
     "pinia",
-    "redux"
+    "composable",
+    "composition-api",
+    "typescript",
+    "useWebSocket",
+    "auto-reconnect",
+    "reactive"
   ],
-  "author": "SADDAM UWEJAN",
+  "author": {
+    "name": "Saddam Uwejan (Sam)",
+    "email": "saddamuwejan@gmail.com",
+    "url": "https://github.com/uwejan"
+  },
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/uwejan/native-websocket-vue3/issues"
   },
   "homepage": "https://github.com/uwejan/native-websocket-vue3#readme",
+  "peerDependencies": {
+    "pinia": "^2.1.0 || ^3.0.0",
+    "vue": ">=3.3.0"
+  },
+  "peerDependenciesMeta": {
+    "pinia": {
+      "optional": true
+    }
+  },
   "devDependencies": {
-    "@babel/cli": "^7.20.7",
-    "@babel/core": "^7.20.12",
-    "@babel/eslint-parser": "^7.19.1",
-    "@babel/plugin-transform-runtime": "^7.19.6",
-    "@babel/preset-env": "^7.20.2",
-    "babel-loader": "^9.1.2",
-    "eslint": "^8.34.0",
-    "eslint-config-standard": "^17.0.0",
-    "eslint-plugin-import": "^2.27.5",
-    "eslint-plugin-n": "^15.6.1",
-    "eslint-plugin-promise": "^6.1.1",
-    "terser-webpack-plugin": "^5.3.6",
-    "vue": "^3.2.47",
-    "webpack": "^5.75.0",
-    "webpack-cli": "^5.0.1"
+    "@babel/core": "^7.28.5",
+    "@babel/eslint-parser": "^7.28.5",
+    "@babel/plugin-transform-runtime": "^7.28.5",
+    "@babel/preset-env": "^7.28.5",
+    "@babel/runtime": "^7.28.4",
+    "@eslint/js": "^9.39.2",
+    "@vitest/coverage-v8": "^4.0.15",
+    "babel-loader": "^10.0.0",
+    "eslint": "^9.39.2",
+    "eslint-plugin-import": "^2.32.0",
+    "globals": "^16.2.0",
+    "happy-dom": "^20.0.11",
+    "pinia": "^3.0.4",
+    "terser-webpack-plugin": "^5.3.16",
+    "vitest": "^4.0.15",
+    "vue": "^3.5.25",
+    "webpack": "^5.103.0",
+    "webpack-cli": "^6.0.1"
   }
 }
