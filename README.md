@@ -9,6 +9,8 @@
 
 Native WebSocket implementation for Vue 3 with **Composition API** support, Vuex, and Pinia integration.
 
+> ⭐ **If this library helps you build real-time Vue apps, consider giving it a star!** It helps others discover this project and motivates continued development.
+
 ## Features
 
 - 🚀 **Composition API** - Modern `useWebSocket` composable
@@ -378,8 +380,6 @@ MIT © Saddam Uwejan
 ## 🤝 Contributing
 
 Contributions are welcome! Please open an issue or submit a PR.
-
-Found this useful? Give it a ⭐ on [GitHub](https://github.com/uwejan/native-websocket-vue3)!
 
 For implementation details and edge cases, see `test/` directory.
 
